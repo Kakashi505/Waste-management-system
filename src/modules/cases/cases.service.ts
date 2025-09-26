@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Like } from 'typeorm';
 import { InjectQueue } from '@nestjs/bull';
 import { Queue } from 'bull';
 
@@ -179,7 +179,7 @@ export class CasesService {
     const prefix = `WM${year}${month}${day}`;
     
     const lastCase = await this.caseRepository.findOne({
-      where: { caseNumber: new RegExp(`^${prefix}`) },
+      where: { caseNumber: Like(`${prefix}%`) },
       order: { caseNumber: 'DESC' },
     });
 

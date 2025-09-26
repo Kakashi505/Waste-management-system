@@ -1,8 +1,10 @@
 {
   "name": "waste-management-system",
   "version": "1.0.0",
-  "description": "廃棄物管理システム - Waste Management System for Japanese clients",
-  "main": "dist/main.js",
+  "description": "Japanese Waste Management System with NestJS backend and React frontend",
+  "author": "AI Assistant",
+  "private": true,
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -26,7 +28,8 @@
     "deploy:win": "powershell -ExecutionPolicy Bypass -File scripts/deploy.ps1",
     "backup": "bash scripts/backup.sh",
     "monitor": "bash scripts/monitor.sh",
-    "monitor:win": "powershell -ExecutionPolicy Bypass -File scripts/monitor.ps1"
+    "monitor:win": "powershell -ExecutionPolicy Bypass -File scripts/monitor.ps1",
+    "vercel-build": "node run-simple.js"
   },
   "dependencies": {
     "@nestjs/bull": "^10.0.0",
@@ -54,7 +57,11 @@
     "rxjs": "^7.8.1",
     "sharp": "^0.32.0",
     "socket.io": "^4.7.0",
-    "typeorm": "^0.3.17"
+    "typeorm": "^0.3.17",
+    "@nestjs/websockets": "^10.0.0",
+    "@nestjs/platform-socket.io": "^10.0.0",
+    "otplib": "^12.0.1",
+    "qrcode": "^1.5.3"
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.10",
@@ -80,7 +87,7 @@
     "ts-jest": "^29.1.0",
     "ts-loader": "^9.4.3",
     "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.2.0",
+    "tsconfig-paths": "^4.2.1",
     "typescript": "^5.1.3"
   },
   "jest": {

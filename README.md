@@ -2,7 +2,11 @@
 
 日本企業向けの包括的な廃棄物管理システムです。排出事業者、元請業者、収集運搬業者向けの機能を提供し、電子マニフェスト（JWNET）連携、GPS追跡、写真管理、逆オークション機能を備えています。
 
-## 🚀 主な機能
+## 🚀 デプロイ済みシステム
+
+**🌐 本番環境**: [https://waste-management-system.vercel.app](https://waste-management-system.vercel.app)
+
+## 📊 システム概要
 
 ### 核心機能
 - **廃棄物依頼管理**: 依頼作成、地域・許可証・価格に基づく自動マッチング、ステータス管理
@@ -31,47 +35,60 @@
 - **AWS S3** - オブジェクトストレージ
 - **JWT** - 認証・認可
 
+### フロントエンド
+- **React** + **TypeScript**
+- **PWA対応** - モバイル最適化
+- **API統合** - 型安全なAPI呼び出し
+
 ### インフラ
+- **Vercel** - クラウドデプロイ
 - **Docker** + **Docker Compose**
 - **Nginx** - リバースプロキシ
-- **AWS** - クラウドインフラ
-
-## 📋 前提条件
-
-- Node.js 18+
-- Docker & Docker Compose
-- PostgreSQL 15+
-- Redis 7+
 
 ## 🚀 クイックスタート
 
-### 1. リポジトリのクローン
-```bash
-git clone <repository-url>
-cd waste-management-system
-```
+### 1. ローカル開発環境
 
-### 2. 環境設定
 ```bash
+# リポジトリのクローン
+git clone https://github.com/Kakashi505/Waste-management-system.git
+cd Waste-management-system
+
+# 依存関係インストール
+npm install
+
+# 環境変数設定
 cp env.example .env
-# .envファイルを編集して設定を調整
+
+# 開発サーバー起動
+npm run start:dev
 ```
 
-### 3. Docker Composeで起動
+### 2. Docker環境
+
 ```bash
+# Docker Composeで起動
 docker-compose up -d
+
+# データベース初期化
+npm run seed
+
+# アプリケーションアクセス
+# - API: http://localhost:3000
+# - API ドキュメント: http://localhost:3000/api/docs
+# - ヘルスチェック: http://localhost:3000/health
 ```
 
-### 4. データベース初期化
+### 3. 本番デプロイ
+
 ```bash
-# データベーススキーマが自動的に適用されます
-# 必要に応じて初期データを投入
-```
+# Vercel CLIでデプロイ
+npm install -g vercel
+vercel --prod
 
-### 5. アプリケーションアクセス
-- **API**: http://localhost:3000
-- **API ドキュメント**: http://localhost:3000/api/docs
-- **ヘルスチェック**: http://localhost:3000/health
+# または GitHub連携で自動デプロイ
+# プッシュ時に自動的にデプロイされます
+```
 
 ## 📚 API ドキュメント
 
@@ -169,9 +186,8 @@ GET /api/auction/status/{caseId}
          └───────────────────────┼───────────────────────┘
                                  │
                     ┌─────────────────┐
-                    │   Nginx         │
-                    │   (Reverse      │
-                    │    Proxy)       │
+                    │   Vercel        │
+                    │   (CDN & Edge)  │
                     └─────────────────┘
                                  │
                     ┌─────────────────┐
@@ -222,13 +238,13 @@ GET /api/auction/status/{caseId}
 ### ヘルスチェック
 ```bash
 # アプリケーション状態確認
-curl http://localhost:3000/health
+curl https://waste-management-system.vercel.app/api/health
 
 # データベース接続確認
-curl http://localhost:3000/api/health/db
+curl https://waste-management-system.vercel.app/api/health/db
 
 # Redis接続確認
-curl http://localhost:3000/api/health/redis
+curl https://waste-management-system.vercel.app/api/health/redis
 ```
 
 ### ログ管理
@@ -260,13 +276,16 @@ npm run test:cov
 
 ## 🚀 デプロイ
 
-### 本番環境デプロイ
+### Vercel デプロイ
 ```bash
-# 本番用Dockerイメージビルド
-docker build -t waste-management:latest .
+# Vercel CLIでデプロイ
+npm install -g vercel
+vercel --prod
 
-# 本番環境デプロイ
-docker-compose -f docker-compose.prod.yml up -d
+# 環境変数設定
+vercel env add DB_HOST
+vercel env add DB_PASSWORD
+vercel env add JWT_SECRET
 ```
 
 ### 環境変数設定
@@ -281,7 +300,7 @@ docker-compose -f docker-compose.prod.yml up -d
 
 ### 推奨スペック
 - **CPU**: 2コア以上
-- **メモリ**: 4GB以上
+- **メモリ**: 8GB以上
 - **ストレージ**: 50GB以上（SSD推奨）
 - **ネットワーク**: 100Mbps以上
 
@@ -304,8 +323,8 @@ docker-compose -f docker-compose.prod.yml up -d
 
 ## 📞 サポート
 
-- **ドキュメント**: [API ドキュメント](http://localhost:3000/api/docs)
-- **Issues**: [GitHub Issues](https://github.com/your-repo/issues)
+- **ドキュメント**: [API ドキュメント](https://waste-management-system.vercel.app/api/docs)
+- **Issues**: [GitHub Issues](https://github.com/Kakashi505/Waste-management-system/issues)
 - **メール**: support@example.com
 
 ## 🔄 更新履歴
@@ -317,7 +336,10 @@ docker-compose -f docker-compose.prod.yml up -d
 - 逆オークション機能
 - GPS追跡機能
 - 写真管理機能
+- Vercel デプロイ対応
 
 ---
 
 **廃棄物管理システム** - 日本の廃棄物管理をデジタル化し、効率化を実現します。
+
+**🌐 本番環境**: [https://waste-management-system.vercel.app](https://waste-management-system.vercel.app)

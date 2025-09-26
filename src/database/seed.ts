@@ -120,6 +120,7 @@ async function seedCarriers() {
       serviceAreas: [
         {
           type: 'radius',
+          coordinates: [[35.6762, 139.6503]],
           center: { lat: 35.6762, lng: 139.6503 },
           radius: 50000, // 50km
         },
@@ -211,6 +212,7 @@ async function seedCarriers() {
       serviceAreas: [
         {
           type: 'radius',
+          coordinates: [[35.7, 139.7]],
           center: { lat: 35.7, lng: 139.7 },
           radius: 30000, // 30km
         },

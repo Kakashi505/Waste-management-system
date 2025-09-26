@@ -15,6 +15,21 @@ import { JwnetModule } from './modules/jwnet/jwnet.module';
 import { AuditModule } from './modules/audit/audit.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
 import { ReportsModule } from './modules/reports/reports.module';
+import { AnalyticsModule } from './modules/analytics/analytics.module';
+import { AiModule } from './modules/ai/ai.module';
+import { IntegrationsModule } from './modules/integrations/integrations.module';
+import { CacheModule } from './modules/cache/cache.module';
+import { TenantsModule } from './modules/tenants/tenants.module';
+import { SecurityModule } from './modules/security/security.module';
+import { SsoModule } from './modules/sso/sso.module';
+import { EnterpriseReportsModule } from './modules/enterprise-reports/enterprise-reports.module';
+import { ApiManagementModule } from './modules/api-management/api-management.module';
+import { ErpModule } from './modules/erp/erp.module';
+import { IotModule } from './modules/iot/iot.module';
+import { MonitoringModule } from './modules/monitoring/monitoring.module';
+import { BackupModule } from './modules/backup/backup.module';
+import { ComplianceModule } from './modules/compliance/compliance.module';
+import { OptimizationModule } from './modules/optimization/optimization.module';
 import { HealthModule } from './health/health.module';
 
 @Module({
@@ -53,6 +68,21 @@ import { HealthModule } from './health/health.module';
     AuditModule,
     NotificationsModule,
     ReportsModule,
+    AnalyticsModule,
+    AiModule,
+    IntegrationsModule,
+    CacheModule,
+    TenantsModule,
+    SecurityModule,
+    SsoModule,
+    EnterpriseReportsModule,
+    ApiManagementModule,
+    ErpModule,
+    IotModule,
+    MonitoringModule,
+    BackupModule,
+    ComplianceModule,
+    OptimizationModule,
     HealthModule,
   ],
 })
